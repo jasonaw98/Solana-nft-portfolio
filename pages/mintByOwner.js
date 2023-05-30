@@ -1,10 +1,7 @@
-import Head from 'next/head'
-
 import { useState, useEffect } from "react";
 
 function MintImage({ uri }) {
   const [image, setImage] = useState(null);
-  const [desc, setdesc] = useState(null);
   const [error, setError] = useState(null);
 
   async function getImage(uri){
@@ -13,7 +10,6 @@ function MintImage({ uri }) {
       const data = await response.json();
       if (response.ok) {
         setImage(data.image);
-        setdesc(data.description);
       } else {
         setError(data.error);
       }
@@ -31,14 +27,13 @@ function MintImage({ uri }) {
     <>
       {error && <p>There was an error: {error}</p>}
       {image && <img src={image} alt="nft" />}
-      {desc && <p>{desc}</p>}
     </>
   );
 }
 
 export default function MintsByOwnerPage() {
   const [ownerAccount, setOwnerAccount] = useState("");
-  const [mints, setMints] = useState([]);
+  const [mints, setMints] = useState(null);
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -70,32 +65,38 @@ export default function MintsByOwnerPage() {
 
   return (
     <div>
-      <h1>Mints By Owner</h1>
+      <div style={{
+        backgroundImage: 'url("1.jpg")',
+        filter: 'blur(7px)',
+        width: '100%',
+        height: '100%',
+        backgroundSize: 'cover',
+          zIndex: -1,
+        position: "fixed",
+        width: "100vw",
+        height: "100vh"
+      }}></div>
+      <h1>View Your Solana NFT Collections 🚀</h1>
       {error && <p>There was an error: {error}</p>}
       <form onSubmit={handleSubmit}>
-        <label htmlFor="ownerAccount">Owner Account:</label>
+        <label htmlFor="ownerAccount">Enter address:</label>
         <input type="text" id="ownerAccount" value={ownerAccount} onChange={(e) => setOwnerAccount(e.target.value)} />
 
-        <button type="submit">Get Mints</button>
+        <button className='submit-button' type="submit">Get Mints</button>
       </form>
+
       {mints && mints.length && (
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Image</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
+          <div className='container mx-auto px-3'>
+            <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-4'>
             {mints.map((mint) => (
-              <tr key={mint.id}>
-                <td>{mint.metadataJson.name}</td>
-                <td><MintImage uri={mint.metadataJson.uri} /></td>
+              <tr className='nft' key={mint.id}>
+                <td className='text-3xl md:text-2xl font-bold text-slate-700 mb-5 text-center' >{mint.metadataJson.name}</td>
+                {/* <td className='nftname' >{mint.metadataJson.name}</td> */}
+                <td className='nftimg '><MintImage uri={mint.metadataJson.uri} /></td>
               </tr>
             ))}
-          </tbody>
-        </table>
+            </div>
+          </div>
       )}
     </div>
   );
