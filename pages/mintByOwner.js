@@ -67,14 +67,12 @@ export default function MintsByOwnerPage() {
     <div>
       <div style={{
         backgroundImage: 'url("1.jpg")',
-        filter: 'blur(7px)',
+        // backgroundImage: 'linear-gradient(to right, #ACB6E5, #74ebd5)',
         width: '100%',
         height: '100%',
         backgroundSize: 'cover',
           zIndex: -1,
         position: "fixed",
-        width: "100vw",
-        height: "100vh"
       }}></div>
       <h1>View Your Solana NFT Collections 🚀</h1>
       {error && <p>There was an error: {error}</p>}
