@@ -8,3 +8,5 @@ Just paste any address you like and it will show all NFTs in their wallet.
 
 <br><br/>
 This app is made posible by utilizing the HelloMoon API and Next.js
+
+Also currently this web app is not made responsive due to time constraints but feel free to create a pull request or collaborate. Cheers!
