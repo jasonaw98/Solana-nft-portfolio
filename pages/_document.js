@@ -4,13 +4,19 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <noscript>
-          &lt;a href="https://yllix.com/publishers/782563"
-          target="_blank"&gt;&lt;img
-          src="//ylx-aff.advertica-cdn.com/pub/160x600.png"
-          style="border:none;margin:0;padding:0;vertical-align:baseline;"
-          alt="ylliX - Online Advertising Network" /&gt;&lt;/a&gt;
-        </noscript>
+        <script
+        type="text/javascript"
+        src="https://udbaa.com/bnr.php?section=General&pub=782563&format=300x250&ga=g"
+      ></script>
+      <noscript>
+        <a href="https://yllix.com/publishers/782563" target="_blank">
+          <img
+            src="//ylx-aff.advertica-cdn.com/pub/300x250.png"
+            style={{ border: 'none', margin: 0, padding: 0, verticalAlign: 'baseline' }}
+            alt="ylliX - Online Advertising Network"
+          />
+        </a>
+      </noscript>
       </Head>
       <body>
         <Main />
