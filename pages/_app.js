@@ -6,7 +6,7 @@ import Ads from './ads';
 
 export default function App() {
   return <div>
-    <Ads/>
+    {/* <Ads/> */}
     <MintsByOwnerPage />
     <Analytics />
   </div>

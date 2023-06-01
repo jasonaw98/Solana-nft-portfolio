@@ -17,6 +17,15 @@ export default function Document() {
           />
         </a>
       </noscript> */}
+      <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+      <amp-ad width="100vw" height="320"
+        type="adsense"
+        data-ad-client="ca-pub-7966611751536031"
+        data-ad-slot="2750679352"
+        data-auto-format="rspv"
+        data-full-width="">
+        <div overflow=""></div>
+    </amp-ad>
       </Head>
       <body>
         <Main />

@@ -83,3 +83,12 @@ form input {
   object-fit: contain;
   align-self: center;
 }
+
+.fetchMint{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  /* font-weight: bold; */
+  font-style: oblique;
+}

@@ -34,12 +34,16 @@ function MintImage({ uri }) {
 export default function MintsByOwnerPage() {
   const [ownerAccount, setOwnerAccount] = useState("");
   const [mints, setMints] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
+
     try {
+      await new Promise((resolve) => setTimeout(resolve, 5000));
       const response = await fetch("https://rest-api.hellomoon.io/v0/nft/mints-by-owner", {
         method: "POST",
         headers: {
@@ -60,8 +64,21 @@ export default function MintsByOwnerPage() {
     } catch (error) {
       console.error(error);
       setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    const syntheticEvent = {
+      preventDefault: () => {}
+    };
+  
+    const initialOwnerAccount = "629kW7T6tidG8hcvhd5KYfT4QTnR847MkFMXghSgqeG2";
+    setOwnerAccount(initialOwnerAccount);
+    handleSubmit(syntheticEvent);
+  }, []);
+  
 
   return (
     <div>
@@ -83,7 +100,10 @@ export default function MintsByOwnerPage() {
         <button className='submit-button' type="submit">Get Mints</button>
       </form>
 
-      {mints && mints.length && (
+      {loading ? (
+        <p className="fetchMint">Fetching Mints....😎</p>
+      ) : (
+      mints && mints.length ? (
           <div className='container mx-auto px-3'>
             <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-4'>
             {mints.map((mint) => (
@@ -95,6 +115,9 @@ export default function MintsByOwnerPage() {
             ))}
             </div>
           </div>
+      ) : (
+        <p className="fetchMint">No Mints Found 😅</p>
+      )
       )}
     </div>
   );
