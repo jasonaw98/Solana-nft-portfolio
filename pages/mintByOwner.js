@@ -42,7 +42,7 @@ export default function MintsByOwnerPage() {
 
     setLoading(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 7000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     try {
       const response = await fetch("https://rest-api.hellomoon.io/v0/nft/mints-by-owner", {
         method: "POST",
