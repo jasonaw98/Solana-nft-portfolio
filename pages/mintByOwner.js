@@ -42,8 +42,8 @@ export default function MintsByOwnerPage() {
 
     setLoading(true);
 
+    await new Promise((resolve) => setTimeout(resolve, 7000));
     try {
-      await new Promise((resolve) => setTimeout(resolve, 5000));
       const response = await fetch("https://rest-api.hellomoon.io/v0/nft/mints-by-owner", {
         method: "POST",
         headers: {
@@ -102,7 +102,7 @@ export default function MintsByOwnerPage() {
 
       {loading ? (
         <p className="fetchMint">Fetching Mints....😎</p>
-      ) : (
+      ) :
       mints && mints.length ? (
           <div className='container mx-auto px-3'>
             <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-4'>
@@ -118,7 +118,7 @@ export default function MintsByOwnerPage() {
       ) : (
         <p className="fetchMint">No Mints Found 😅</p>
       )
-      )}
+      }
     </div>
   );
 }
