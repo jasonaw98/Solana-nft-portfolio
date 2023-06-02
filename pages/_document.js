@@ -17,6 +17,7 @@ export default function Document() {
           />
         </a>
       </noscript> */}
+      <meta name="monetag" content="daf9bd6075813a5e479d446e5a1614b2"></meta>
       <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
       <amp-ad width="100vw" height="320"
         type="adsense"
